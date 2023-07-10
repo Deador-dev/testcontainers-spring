@@ -8,9 +8,12 @@ import java.util.List;
 
 @Service
 public class CustomerDao {
+    private final JdbcTemplate jdbcTemplate;
 
     @Autowired
-    JdbcTemplate jdbcTemplate;
+    public CustomerDao(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
 
     public List<Customer> findAll() {
         return jdbcTemplate.query(

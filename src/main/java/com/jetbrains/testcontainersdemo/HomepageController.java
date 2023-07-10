@@ -10,11 +10,13 @@ import java.util.List;
 
 @RestController
 public class HomepageController {
-
     private static final Logger logger = LoggerFactory.getLogger(HomepageController.class);
+    private final CustomerDao customerDao;
 
     @Autowired
-    private CustomerDao customerDao;
+    public HomepageController(CustomerDao customerDao) {
+        this.customerDao = customerDao;
+    }
 
     @GetMapping("/")
     public List<Customer> customers() {
